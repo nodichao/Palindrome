@@ -1,0 +1,47 @@
+
+//Le but de cette fonction est de verifier si un mot est un palindrome ou non
+FUNCTION Est_Palindrome(mot : STRING) : STRING
+VAR
+
+//declaration initialisation de i a 0.
+     i : INTEGER := 0;
+
+BEGIN
+      IF (mot = "") THEN
+          RETURN (mot," est une palindrome.");
+      ELSE_IF (mot.length = 1) THEN
+          RETURN (mot," est une palindrome.");
+      ELSE
+           /*chaque valeur de i est comparée successivement avec son opposé dans le mot, de sorte a verifier si le mot en question est un palindrome*/
+         WHILE (i < (mot.length)/2) DO
+              IF (mot[i] = mot[mot.length - 1 - i]) THEN
+                i := i + 1 ;
+              ELSE
+                BREAK;
+              END_IF
+         END_WHILE
+
+         //Si i arrive a atteindre le milieu du mot, c'est que l'on a un palindrome. Sinon, ce n'en est pas un.
+           IF (i = (mot.length/2)) THEN
+               RETURN(mot," est un palindrome");
+           ELSE
+              RETURN(mot, " n'est pas un palindrome");
+           END_IF
+      END_IF
+END
+
+
+ALGORITHM palindrome
+VAR
+//declaration des variables  
+     mon_mot : STRING;
+BEGIN
+     
+//Lecture du mot a analyser
+    Read(mon_mot);
+
+//Appel de la fonction est_palindrome
+
+   Est_Palindrome(mon_mot);
+
+END
